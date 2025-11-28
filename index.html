@@ -1,16 +1,112 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>project
-        </title>
+        <title>project</title>
+        <link rel="stylesheet" href="style.css">
         <script type="text/javascript" src="MV.js"></script>
         <script type="text/javascript" src="script.js"></script>
-
         <script id="wgsl" type="x-shader" src="shader.wgsl"></script>
+        <script type="text/javascript" src="OBJParser.js"></script>
     </head>
     <body>
-        <canvas id="webgl" width="512" height="512">
-            Please use a browser that supports HTML5 canvas.
-        </canvas>   
+        <div class="layout">
+            <canvas id="webgl" width="650" height="650">
+                Please use a browser that supports HTML5 canvas.
+            </canvas>
+            <div class="controls">
+                <!-- <div class="button-row">
+                    <button id="add_sub">Increase Subdivisions</button>
+                    <button id="remove_sub">Decrease Subdivisions</button>
+                </div> -->
+                <div class="slider-stack">
+                    <!-- <div class="slider-row">
+                        <label for="k_d_r">K-d R</label>
+                        <input type="range" id="k_d_r" min="0" max="1" step="0.01">
+                    </div>
+                    <div class="slider-row">
+                        <label for="k_d_g">K-d G</label>
+                        <input type="range" id="k_d_g" min="0" max="1" step="0.01">
+                    </div>
+                    <div class="slider-row">
+                        <label for="k_d_b">K-d B</label>
+                        <input type="range" id="k_d_b" min="0" max="1" step="0.01">
+                    </div> -->
+                    
+                    <div id="incoming">
+                        <h3>Incoming Light Colour</h3>
+                        <div class="slider-row">
+                            <label for="Le">Red</label>
+                            <input type="range" id="l_er" min="0" max="1" step="0.01" value="1">
+                        </div>
+                        <div class="slider-row">
+                            <label for="Le">Green</label>
+                            <input type="range" id="l_eg" min="0" max="1" step="0.01" value="1">
+                        </div>
+                        <div class="slider-row">
+                            <label for="Le">Blue</label>
+                            <input type="range" id="l_eb" min="0" max="1" step="0.01" value="1">
+                        </div>
+                    </div>
+                    <div class="slider-row">
+                        <label for="k_s">Specular</label>
+                        <input type="range" id="k_s" min="0" max="1" step="0.01" value=".2">
+                    </div>
+                    <div class="slider-row">
+                        <label for="s">Matte</label>
+                        <input type="range" id="s" min="1" max="20" step="1" value="15">
+                        
+                    </div>
+                    <div class="slider-row">
+                        <label for="La">Ambient</label>
+                        <input type="range" id="l_a" min="0" max="2" step="0.01" value=".8">
+                    </div>
+                    <div id="incoming">
+                        <h4>Wood Generation Parameters</h4>
+                        <div class="slider-row">
+                            <label for="ring">Rings</label>
+                            <input type="range" id="r_freq" min="50" max="500" step="1" value="150">
+                        </div>
+                        <div class="slider-row">
+                            <label for="hf">HF Noise</label>
+                            <input type="range" id="hf" min="0" max="4" step="0.01" value="0.3">
+                        </div>
+                        <div class="slider-row">
+                            <label for="lf">LF Noise</label>
+                            <input type="range" id="lf" min="0" max="3" step="0.05" value="1">
+                        </div>
+                    </div>
+                    <!-- Rounded switch -->
+
+                    <div class="slider-row">
+                        <label>Model Select</label>
+                        <select id="object" class="slider-row">
+                            <option value="plane">Plane</option>
+                            <option value="potato">Potato</option>
+                            <option value="pawn">Pawn</option>
+                        </select>
+                        <button id="spin">spin</button>
+                    </div>
+                    <div class="slider-row">
+                        <label>Model Source</label>
+                       <a href="https://free3d.com/3d-model/airplane-v1--592360.html" target=”_blank”>Plane</a>
+                       <a href="https://free3d.com/3d-model/potato-v1--610124.html" target=”_blank”>Potato</a>
+                       <a href="https://free3d.com/3d-model/woodenchesspawnsidea-v1--434515.html" target=”_blank”>Pawn</a>
+                    </div>
+
+                    <!-- <div class="slider-row">
+                        <label for="cx">X position</label>
+                        <input type="range" id="cx" min="-1" max="1" step="0.01">
+                    </div>
+                    <div class="slider-row">
+                        <label for="cy">Y position</label>
+                        <input type="range" id="cy" min="-5" max="5" step="0.01">
+                    </div>
+                    <div class="slider-row">
+                        <label for="cz">Z position</label>
+                        <input type="range" id="cz" min="-1" max="1" step="0.01">
+                    </div> -->
+                </div>
+            </div>
+        </div>
     </body>
 </html>
