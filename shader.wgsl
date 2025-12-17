@@ -13,12 +13,13 @@ struct LightingUniforms {
     lightDir : vec3f, lf : f32,
 };
 
-//chatGPT noise
+//Hash noise
 fn hash3(p: vec3<f32>) -> f32 {
     let dotp = dot(p, vec3<f32>(12.9898, 78.233, 45.164));
     return fract(sin(dotp) * 43758.5453);
 }
 
+//my fake perlin - not gradient
 fn noise3(p: vec3<f32>) -> f32 {
     let i = floor(p);
     let f = fract(p);
@@ -96,6 +97,10 @@ fn main_vs(in : VSIn) -> VSOut {
 
 @fragment
 fn main_fs(in : VSOut) -> @location(0) vec4<f32> {
+  // to prevent error, use tex and samp
+  let texSam = textureSample(tex, samp, in.uv);
+
+  
   // 3D wood core: radial distance in XZ
   let p = in.world_pos;
   // Warp rings
@@ -121,16 +126,10 @@ fn main_fs(in : VSOut) -> @location(0) vec4<f32> {
 
   // Wood colors
   let dark  = vec3<f32>(0.3, 0.19, 0.075);
-  let light = vec3<f32>(1.0, 0.73, 0.426) * 0.4;
-
-
+  let light = vec3<f32>(0.4, 0.292, 0.1704);
 
   let woodout =  mix(light, dark, t);
   // end random wood thing
-
-
-  let texSam = textureSample(tex, samp, in.uv);
-
 
   let N = normalize(in.world_normal);
   let wi = normalize(lighting.lightDir);

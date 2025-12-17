@@ -133,7 +133,7 @@ async function main()
     }
 
 
-
+    // region TEX - not used
     var texSize = 128;
     const myTexels = new Uint8Array(4 * texSize * texSize); // RGBA8 data
 
@@ -181,6 +181,7 @@ async function main()
         [texSize, texSize, 1]
     );
 
+    // endregion
 
     const uniformBuffer = device.createBuffer({
     size: 3*sizeof['mat4'],
@@ -307,8 +308,6 @@ async function main()
             indices =   pawn.indices;
         }
 
-        
-
         if (spin)
         {
             theta += 0.01;
@@ -397,7 +396,6 @@ async function main()
             }
         });
 
-        // Insert render pass commands here
         pass.setBindGroup(0, bindGroup);
         pass.setPipeline(pipeline);
         pass.setVertexBuffer(0, positionBuffer);
